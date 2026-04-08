@@ -3,10 +3,12 @@ package com.example.shop.model;
 public class Book implements Product {
     private String name;
     private double price;
+    private String author;
 
-    public Book(String name, double price) {
+    public Book(String name, double price, String author) {
         this.name = name;
         this.price = price;
+        this.author = author;
     }
 
     @Override
@@ -22,6 +24,10 @@ public class Book implements Product {
     @Override
     public ProductCategory getCategory() {
         return ProductCategory.BOOK;
+    }
+
+    public String getAuthor() {
+        return author;
     }
 
 }
