@@ -1,7 +1,5 @@
 package com.example.shop.model;
 
-import com.example.shop.factory.ProductCategory;
-
 public class Electronics implements Product {
     private String name;
     private double price;

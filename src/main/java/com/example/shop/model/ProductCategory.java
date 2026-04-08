@@ -1,4 +1,4 @@
-package com.example.shop.factory;
+package com.example.shop.model;
 
 public enum ProductCategory {
     BOOK,
