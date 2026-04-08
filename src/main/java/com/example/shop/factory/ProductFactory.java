@@ -1,13 +1,14 @@
 package com.example.shop.factory;
 
-import com.example.shop.model.Product;
+import com.example.shop.model.*;
 
-public abstract class ProductFactory {
-    public abstract Product createProduct(String name, double price);
-
-    public void announceProduct(Product product) {
-        System.out.println("New product added: " + product.getName() +
-                " | Category: " + product.getCategory() +
-                " | Price: " + product.getPrice());
+public class ProductFactory {
+    public static Product createProduct(String name, double price, ProductCategory category) {
+        return switch (category) {
+            case BOOK -> new Book(name, price);
+            case ELECTRONICS -> new Electronics(name, price);
+            case FURNITURE -> new Furniture(name, price);
+        };
     }
+
 }

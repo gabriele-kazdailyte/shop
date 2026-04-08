@@ -1,5 +1,7 @@
 package com.example.shop.model;
 
+import com.example.shop.factory.ProductCategory;
+
 public class Book implements Product {
     private String name;
     private double price;
@@ -20,8 +22,8 @@ public class Book implements Product {
     }
 
     @Override
-    public String getCategory() {
-        return "Books";
+    public ProductCategory getCategory() {
+        return ProductCategory.BOOK;
     }
 
 }
