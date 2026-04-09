@@ -1,8 +1,7 @@
 package com.example.shop;
 
 import com.example.shop.factory.ProductFactory;
-import com.example.shop.model.Product;
-import com.example.shop.model.ProductCategory;
+import com.example.shop.model.*;
 import com.example.shop.observer.AdminLogger;
 import com.example.shop.observer.UIObserver;
 import com.example.shop.order.BasicOrder;
@@ -12,9 +11,26 @@ import com.example.shop.order.OrderService;
 import com.example.shop.inventory.Inventory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class Controller {
 
+    @FXML
+    private TableColumn<Product, Integer> amountColumn;
+
+    @FXML
+    private TableColumn<Product, String> descriptionColumn;
+
+    @FXML
+    private TableColumn<Product, String> nameColumn;
+
+    @FXML
+    private TableColumn<Product, Double> priceColumn;
+
+    @FXML
+    private TableView<Product> productTable;
 
     private Inventory inventory = Inventory.getInstance();
     private UIObserver observer = new UIObserver();
@@ -24,6 +40,38 @@ public class Controller {
     public void initialize() {
         inventory.registerObserver(observer);
         inventory.registerObserver(new AdminLogger());
+
+        nameColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleStringProperty(data.getValue().getName()));
+
+        priceColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getPrice()));
+
+        descriptionColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleStringProperty(
+                        getDetail(data.getValue())));
+
+        exampleProducts();
+        productTable.getItems().addAll(inventory.getProducts());
+    }
+
+    public void exampleProducts () {
+        inventory.addProduct(ProductFactory.createProduct(
+                ProductCategory.BOOK, "Romeo and Juliet", 9.99, "Shakespeare"));
+
+        inventory.addProduct(ProductFactory.createProduct(
+                ProductCategory.ELECTRONICS, "iPhone 15", 499.99, "iPhone"));
+
+        inventory.addProduct(ProductFactory.createProduct(
+                ProductCategory.FURNITURE, "Chair", 59.99, "Wood"));
+
+    }
+
+    private String getDetail(Product p) {
+        if (p instanceof Book b) return p.getCategory() + " | " + b.getAuthor();
+        if (p instanceof Electronics e) return p.getCategory() + " | " + e.getBrand();
+        if (p instanceof Furniture f) return p.getCategory() + " | " + f.getMaterial();
+        return "";
     }
 
 }
