@@ -9,7 +9,7 @@ import com.example.shop.order.BasicOrder;
 import com.example.shop.order.ExpressDelivery;
 import com.example.shop.order.GiftWrapping;
 import com.example.shop.order.OrderService;
-import com.example.shop.singleton.Inventory;
+import com.example.shop.inventory.Inventory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

@@ -1,4 +1,4 @@
-package com.example.shop.singleton;
+package com.example.shop.inventory;
 
 import com.example.shop.model.Product;
 import com.example.shop.observer.ProductObserver;
