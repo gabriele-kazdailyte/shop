@@ -9,7 +9,7 @@ public class GiftWrapping extends OrderDecorator {
 
     @Override
     public String getDescription() {
-        return orderService.getDescription() + "Gift Wrapping";
+        return orderService.getDescription() + " + Gift Wrapping";
     }
 
     @Override

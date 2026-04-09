@@ -9,7 +9,7 @@ public class ExpressDelivery extends OrderDecorator {
 
     @Override
     public String getDescription() {
-        return orderService.getDescription() + "Express Delivery";
+        return orderService.getDescription() + " + Express Delivery";
     }
 
     @Override
