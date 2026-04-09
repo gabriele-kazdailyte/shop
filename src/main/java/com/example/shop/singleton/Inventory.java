@@ -34,6 +34,6 @@ public class Inventory {
     }
 
     public List<Product> getProducts() {
-        return products;
+        return new ArrayList<>(products);
     }
 }
