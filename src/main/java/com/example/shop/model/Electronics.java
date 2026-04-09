@@ -23,7 +23,7 @@ public class Electronics implements Product {
 
     @Override
     public ProductCategory getCategory() {
-        return ProductCategory.BOOK;
+        return ProductCategory.ELECTRONICS;
     }
 
     public String getBrand() {
