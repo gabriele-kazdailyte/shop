@@ -30,7 +30,6 @@ public class Furniture implements Product {
         return material;
     }
 
-    @Override
     public String toString() {
         return "Furniture{name='" + name + "', price=" + price + ", material='" + material + "'}";
     }

@@ -58,4 +58,8 @@ public class Inventory implements ProductSubject {
     public void notifyObservers(Product product) {
         observers.forEach(observer -> observer.update(product));
     }
+
+    public int getObserverCount() {
+        return observers.size();
+    }
 }

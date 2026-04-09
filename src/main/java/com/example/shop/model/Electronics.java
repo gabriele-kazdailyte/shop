@@ -30,7 +30,6 @@ public class Electronics implements Product {
         return brand;
     }
 
-    @Override
     public String toString() {
         return "Electronics{name='" + name + "', price=" + price + ", brand='" + brand + "'}";
     }
