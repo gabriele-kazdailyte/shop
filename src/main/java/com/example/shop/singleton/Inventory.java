@@ -20,4 +20,20 @@ public class Inventory {
         }
         return instance;
     }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void removeProduct(Product product) {
+        products.remove(product);
+    }
+
+    public void  removeAllProducts() {
+        products.clear();
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
 }
