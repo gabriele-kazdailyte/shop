@@ -18,6 +18,6 @@ public class Controller {
         Product product = ProductFactory.createProduct(ProductCategory.BOOK, "Book1", 9.99, "Author1");
         inventory.addProduct(product);
 
-        System.out.println("Products in inventory: " + inventory.getProducts().size());
+        System.out.println("Product added: " + product.toString());
     }
 }

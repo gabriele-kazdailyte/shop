@@ -29,4 +29,9 @@ public class Electronics implements Product {
     public String getBrand() {
         return brand;
     }
+
+    @Override
+    public String toString() {
+        return "Electronics{name='" + name + "', price=" + price + ", brand='" + brand + "'}";
+    }
 }

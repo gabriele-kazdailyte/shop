@@ -4,4 +4,5 @@ public interface Product {
     String getName();
     double getPrice();
     ProductCategory getCategory();
+    String toString();
 }

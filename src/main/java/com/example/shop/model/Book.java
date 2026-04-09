@@ -30,4 +30,9 @@ public class Book implements Product {
         return author;
     }
 
+    @Override
+    public String toString() {
+        return "Book{name='" + name + "', price=" + price + ", author='" + author + "'}";
+    }
+
 }
