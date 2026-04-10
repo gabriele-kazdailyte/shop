@@ -42,12 +42,15 @@ public class Controller {
     @FXML
     private Button removeProduct;
 
+    @FXML
+    private TextArea messagesArea;
+
     private Inventory inventory = Inventory.getInstance();
-    private UIObserver observer = new UIObserver();
 
 
     @FXML
     public void initialize() {
+        UIObserver observer = new UIObserver(messagesArea);
         inventory.registerObserver(observer);
         inventory.registerObserver(new AdminLogger());
 

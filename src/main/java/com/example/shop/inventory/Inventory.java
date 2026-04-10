@@ -56,6 +56,7 @@ public class Inventory implements ProductSubject {
 
     @Override
     public void notifyObservers(Product product) {
+
         observers.forEach(observer -> observer.update(product));
     }
 
