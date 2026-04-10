@@ -4,10 +4,7 @@ import com.example.shop.factory.ProductFactory;
 import com.example.shop.model.*;
 import com.example.shop.observer.AdminLogger;
 import com.example.shop.observer.UIObserver;
-import com.example.shop.order.BasicOrder;
-import com.example.shop.order.ExpressDelivery;
-import com.example.shop.order.GiftWrapping;
-import com.example.shop.order.OrderService;
+import com.example.shop.order.*;
 import com.example.shop.inventory.Inventory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -130,7 +127,24 @@ public class Controller {
 
     @FXML
     void addToCartPressed(ActionEvent event) {
+        Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
 
+        OrderService order = new BasicOrder(selectedProduct);
+
+        if (giftWrapping.isSelected()) {
+            order = new GiftWrapping(order);
+        }
+        if (expressDelivery.isSelected()) {
+            order = new ExpressDelivery(order);
+        }
+
+        ShoppingCart.getInstance().addItem(order);
+
+        messagesArea.appendText("Added to cart: " + order.getDescription()
+                + " | €" + order.getCost() + "\n");
+
+        giftWrapping.setSelected(false);
+        expressDelivery.setSelected(false);
     }
 
     @FXML

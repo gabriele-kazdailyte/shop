@@ -6,8 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
-    private List<OrderService> items = new ArrayList<>();
+    private List<OrderService> items;
     private PaymentStrategy paymentStrategy;
+    private static ShoppingCart instance;
+
+    private ShoppingCart() {
+        items = new ArrayList<>();
+    }
+
+    public static ShoppingCart getInstance() {
+        if (instance == null) {
+            instance = new ShoppingCart();
+        }
+        return instance;
+    }
 
     public void addItem(OrderService order) {
         items.add(order);
