@@ -93,12 +93,27 @@ public class Controller {
         stage.setScene(new Scene(root));
 
         stage.showAndWait();
-        
+
+        AddProductController addProductController = loader.getController();
+        Product product = addProductController.getCreatedProduct();
+
+        if (product != null) {
+            inventory.addProduct(product);
+        }
+
+        productTable.getItems().addAll(inventory.getProducts());
     }
 
     @FXML
     void removeProductPressed(ActionEvent event) {
+        Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
 
+        if (selectedProduct == null) {
+            return;
+        }
+
+        inventory.removeProduct(selectedProduct);
+        productTable.getItems().remove(selectedProduct);
     }
 
 }

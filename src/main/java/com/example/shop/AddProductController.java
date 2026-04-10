@@ -63,6 +63,7 @@ public class AddProductController {
             messagesLabel.setText("Please input a valid price!");
             return;
         }
+        price = Math.round(price * 100.0) / 100.0;
 
         ProductCategory category = categoryBox.getValue();
 
