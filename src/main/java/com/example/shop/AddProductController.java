@@ -33,6 +33,9 @@ public class AddProductController {
     private TextField nameField;
 
     @FXML
+    private TextField quantityField;
+
+    @FXML
     private Label messagesLabel;
 
     @FXML
@@ -49,12 +52,16 @@ public class AddProductController {
     void createProduct(ActionEvent event) {
         String name = nameField.getText();
 
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             messagesLabel.setText("Please input a name!");
             return;
         }
 
         String priceText = priceField.getText();
+        if (priceText == null || priceText.isEmpty()) {
+            messagesLabel.setText("Please input a price!");
+            return;
+        }
 
         double price;
         try {
@@ -65,6 +72,20 @@ public class AddProductController {
         }
         price = Math.round(price * 100.0) / 100.0;
 
+        String quantityText = quantityField.getText();
+        if (quantityText == null || quantityText.isEmpty()) {
+            messagesLabel.setText("Please input a quantity!");
+            return;
+        }
+
+        int quantity;
+        try {
+            quantity = Integer.parseInt(quantityText);
+        } catch (NumberFormatException e) {
+            messagesLabel.setText("Please input a valid quantity!");
+            return;
+        }
+
         ProductCategory category = categoryBox.getValue();
 
         if (category == null) {
@@ -74,7 +95,7 @@ public class AddProductController {
 
         String detail = detailField.getText();
 
-        createdProduct = ProductFactory.createProduct(category, name, price, detail);
+        createdProduct = ProductFactory.createProduct(category, name, price, quantity, detail);
 
         createButton.getScene().getWindow().hide();
     }

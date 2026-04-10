@@ -60,6 +60,8 @@ public class Controller {
         priceColumn.setCellValueFactory(data ->
                 new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getPrice()));
 
+        amountColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getQuantity()));
+
         descriptionColumn.setCellValueFactory(data ->
                 new javafx.beans.property.SimpleStringProperty(
                         getDetail(data.getValue())));
@@ -72,13 +74,13 @@ public class Controller {
 
     public void exampleProducts () {
         inventory.addProduct(ProductFactory.createProduct(
-                ProductCategory.BOOK, "Romeo and Juliet", 9.99, "Shakespeare"));
+                ProductCategory.BOOK, "Romeo and Juliet", 9.99, 40,"Shakespeare"));
 
         inventory.addProduct(ProductFactory.createProduct(
-                ProductCategory.ELECTRONICS, "iPhone 15", 499.99, "iPhone"));
+                ProductCategory.ELECTRONICS, "iPhone 15", 499.99, 20,"iPhone"));
 
         inventory.addProduct(ProductFactory.createProduct(
-                ProductCategory.FURNITURE, "Chair", 59.99, "Wood"));
+                ProductCategory.FURNITURE, "Chair", 59.99, 10,"Wood"));
 
     }
 

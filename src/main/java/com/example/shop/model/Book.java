@@ -3,11 +3,13 @@ package com.example.shop.model;
 public class Book implements Product {
     private String name;
     private double price;
+    private int quantity;
     private String author;
 
-    public Book(String name, double price, String author) {
+    public Book(String name, double price, int quantity, String author) {
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
         this.author = author;
     }
 
@@ -20,6 +22,9 @@ public class Book implements Product {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public int getQuantity() {return quantity; }
 
     @Override
     public ProductCategory getCategory() {

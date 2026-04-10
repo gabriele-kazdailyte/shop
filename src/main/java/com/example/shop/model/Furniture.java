@@ -3,11 +3,13 @@ package com.example.shop.model;
 public class Furniture implements Product {
     private String name;
     private double price;
+    private int quantity;
     private String material;
 
-    public Furniture(String name, double price, String material) {
+    public Furniture(String name, double price, int quantity, String material) {
         this.name = name;
         this.price = price;
+        this.quantity = quantity;
         this.material = material;
     }
 
@@ -25,6 +27,9 @@ public class Furniture implements Product {
     public ProductCategory getCategory() {
         return ProductCategory.FURNITURE;
     }
+
+    @Override
+    public int getQuantity() { return quantity; }
 
     public String getMaterial() {
         return material;
