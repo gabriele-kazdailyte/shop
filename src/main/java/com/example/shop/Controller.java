@@ -45,6 +45,12 @@ public class Controller {
     @FXML
     private TextArea messagesArea;
 
+    @FXML
+    private CheckBox expressDelivery;
+
+    @FXML
+    private CheckBox giftWrapping;
+
     private Inventory inventory = Inventory.getInstance();
 
 
@@ -120,6 +126,16 @@ public class Controller {
 
         inventory.removeProduct(selectedProduct);
         productTable.getItems().remove(selectedProduct);
+    }
+
+    @FXML
+    void addToCartPressed(ActionEvent event) {
+
+    }
+
+    @FXML
+    void goToCartPressed(ActionEvent event) {
+
     }
 
 }

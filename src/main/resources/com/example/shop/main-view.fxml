@@ -31,7 +31,7 @@
                   <Font name="Tw Cen MT Bold" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="productTable" prefHeight="369.0" prefWidth="525.0">
+            <TableView fx:id="productTable" prefHeight="369.0" prefWidth="509.0">
               <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="139.3333282470703" text="ITEM" />
                 <TableColumn fx:id="priceColumn" prefWidth="102.0" text="PRICE €" />
@@ -46,24 +46,33 @@
       </VBox>
    </center>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="481.0" prefWidth="130.0" spacing="50.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="481.0" prefWidth="140.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="- OPTIONS -">
+            <Label prefHeight="29.0" prefWidth="87.0" text="- OPTIONS -">
                <font>
                   <Font name="Tw Cen MT Bold" size="17.0" />
                </font>
             </Label>
-            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="17.0" prefWidth="125.0" text="WRAP AS A GIFT">
+            <Label />
+            <CheckBox fx:id="giftWrapping" mnemonicParsing="false" text="GIFT WRAPPING">
                <font>
                   <Font name="Tw Cen MT Bold" size="12.0" />
                </font>
             </CheckBox>
-            <CheckBox alignment="CENTER" mnemonicParsing="false" prefHeight="17.0" prefWidth="126.0" text="EXPRESS DELIVERY">
+            <CheckBox fx:id="expressDelivery" mnemonicParsing="false" text="EXPRESS DELIVERY" />
+            <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#addToCartPressed" text="ADD TO CART" textFill="#656991">
                <font>
                   <Font name="Tw Cen MT Bold" size="12.0" />
                </font>
-            </CheckBox>
-            <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="21.0" prefWidth="53.0" text="🛒" textAlignment="RIGHT">
+            </Button>
+            <Label />
+            <Label />
+            <Label text="GO TO CHECKOUT">
+               <font>
+                  <Font name="Tw Cen MT Bold" size="12.0" />
+               </font>
+            </Label>
+            <Button fx:id="cartButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#goToCartPressed" prefHeight="21.0" prefWidth="53.0" text="🛒" textAlignment="RIGHT">
                <font>
                   <Font size="22.0" />
                </font>
@@ -80,7 +89,7 @@
    <right>
       <VBox prefHeight="461.0" prefWidth="166.0" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="169.0" text="- MESSAGES -" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="166.0" text="- MESSAGES -" textAlignment="CENTER">
                <font>
                   <Font name="Tw Cen MT Bold" size="18.0" />
                </font>
