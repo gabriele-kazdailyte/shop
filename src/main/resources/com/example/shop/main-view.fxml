@@ -31,7 +31,7 @@
                   <Font name="Tw Cen MT Bold" size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="productTable" prefHeight="337.0" prefWidth="339.0">
+            <TableView fx:id="productTable" prefHeight="369.0" prefWidth="525.0">
               <columns>
                 <TableColumn fx:id="nameColumn" prefWidth="139.3333282470703" text="ITEM" />
                 <TableColumn fx:id="priceColumn" prefWidth="102.0" text="PRICE €" />

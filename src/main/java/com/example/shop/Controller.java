@@ -64,8 +64,10 @@ public class Controller {
                 new javafx.beans.property.SimpleStringProperty(
                         getDetail(data.getValue())));
 
-        exampleProducts();
-        productTable.getItems().addAll(inventory.getProducts());
+        if (inventory.getProducts().isEmpty()) {
+            exampleProducts();
+            productTable.getItems().addAll(inventory.getProducts());
+        }
     }
 
     public void exampleProducts () {
@@ -102,9 +104,8 @@ public class Controller {
 
         if (product != null) {
             inventory.addProduct(product);
+            productTable.getItems().add(product);
         }
-
-        productTable.getItems().addAll(inventory.getProducts());
     }
 
     @FXML
