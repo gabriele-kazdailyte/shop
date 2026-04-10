@@ -92,12 +92,12 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="41.0" prefWidth="628.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button cache="true" mnemonicParsing="false" text="ADD PRODUCT" textFill="#56824b">
+            <Button fx:id="addProduct" cache="true" mnemonicParsing="false" onAction="#addProductPressed" text="ADD PRODUCT" textFill="#56824b">
                <font>
                   <Font name="Tw Cen MT Bold" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" text="REMOVE PRODUCT" textFill="#9a2c2c">
+            <Button fx:id="removeProduct" mnemonicParsing="false" onAction="#removeProductPressed" text="REMOVE PRODUCT" textFill="#9a2c2c">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

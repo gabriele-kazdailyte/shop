@@ -9,11 +9,15 @@ import com.example.shop.order.ExpressDelivery;
 import com.example.shop.order.GiftWrapping;
 import com.example.shop.order.OrderService;
 import com.example.shop.inventory.Inventory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Controller {
 
@@ -31,6 +35,12 @@ public class Controller {
 
     @FXML
     private TableView<Product> productTable;
+
+    @FXML
+    private Button addProduct;
+
+    @FXML
+    private Button removeProduct;
 
     private Inventory inventory = Inventory.getInstance();
     private UIObserver observer = new UIObserver();
@@ -72,6 +82,23 @@ public class Controller {
         if (p instanceof Electronics e) return p.getCategory() + " | " + e.getBrand();
         if (p instanceof Furniture f) return p.getCategory() + " | " + f.getMaterial();
         return "";
+    }
+
+    @FXML
+    void addProductPressed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("add-product-view.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+
+        stage.showAndWait();
+        
+    }
+
+    @FXML
+    void removeProductPressed(ActionEvent event) {
+
     }
 
 }
