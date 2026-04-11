@@ -35,6 +35,10 @@ public class CartController {
     @FXML
     private Label totalPrice;
 
+    public void initialize() {
+
+    }
+
     @FXML
     void completePaymentPressed(ActionEvent event) {
 

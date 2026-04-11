@@ -3,15 +3,16 @@ package com.example.shop.order;
 import com.example.shop.payments.PaymentStrategy;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class ShoppingCart {
-    private List<OrderService> items;
+    private LinkedHashMap<OrderService, Integer> items;
     private PaymentStrategy paymentStrategy;
     private static ShoppingCart instance;
 
     private ShoppingCart() {
-        items = new ArrayList<>();
+        items = new LinkedHashMap<>();
     }
 
     public static ShoppingCart getInstance() {
@@ -22,7 +23,13 @@ public class ShoppingCart {
     }
 
     public void addItem(OrderService order) {
-        items.add(order);
+        for (OrderService existing : items.keySet()) {
+            if (existing.getDescription().equals(order.getDescription())) {
+                items.put(existing, items.get(existing) + 1);
+                return;
+            }
+        }
+        items.put(order, 1);
     }
 
     public void removeItem(OrderService order) {
@@ -34,16 +41,21 @@ public class ShoppingCart {
     }
 
     public double getTotalCost() {
-        return items.stream()
-                .mapToDouble(OrderService::getCost)
+        return items.entrySet().stream()
+                .mapToDouble(e -> e.getKey().getCost() * e.getValue())
                 .sum();
     }
 
     public void checkout() {
+        if (paymentStrategy == null) {
+            System.out.println("No payment method selected!");
+            return;
+        }
         paymentStrategy.pay(getTotalCost());
+        items.clear();
     }
 
-    public List<OrderService> getItems() {
+    public LinkedHashMap<OrderService, Integer> getItems() {
         return items;
     }
 

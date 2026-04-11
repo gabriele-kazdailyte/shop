@@ -138,7 +138,15 @@ public class Controller {
             order = new ExpressDelivery(order);
         }
 
+        if (selectedProduct.getQuantity() == 0) {
+            messagesArea.appendText(selectedProduct.getName() + " is out of stock!\n");
+            return;
+        }
+
         ShoppingCart.getInstance().addItem(order);
+
+        selectedProduct.decreaseQuantity();
+        productTable.refresh();
 
         messagesArea.appendText("Added to cart: " + order.getDescription()
                 + " | €" + order.getCost() + "\n");
@@ -148,8 +156,14 @@ public class Controller {
     }
 
     @FXML
-    void goToCartPressed(ActionEvent event) {
+    void goToCartPressed(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("cart-view.fxml"));
+        Parent root = loader.load();
 
+        Stage stage = new Stage();
+        stage.setTitle("Your Cart");
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 
 }
