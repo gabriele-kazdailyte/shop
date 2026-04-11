@@ -35,10 +35,16 @@ public class Book implements Product {
         return author;
     }
 
+    @Override
     public void decreaseQuantity() {
         if (quantity > 0) {
             quantity--;
         }
+    }
+
+    @Override
+    public void increaseQuantity() {
+        quantity++;
     }
 
     public String toString() {

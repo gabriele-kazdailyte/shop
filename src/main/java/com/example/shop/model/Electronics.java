@@ -35,10 +35,16 @@ public class Electronics implements Product {
         return brand;
     }
 
+    @Override
     public void decreaseQuantity() {
         if (quantity > 0) {
             quantity--;
         }
+    }
+
+    @Override
+    public void increaseQuantity() {
+        quantity++;
     }
 
     public String toString() {

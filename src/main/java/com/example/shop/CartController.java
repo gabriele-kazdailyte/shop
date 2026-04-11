@@ -117,6 +117,7 @@ public class CartController {
 
     @FXML
     void removeItemPressed(ActionEvent event) {
+        
 
     }
 

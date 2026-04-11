@@ -54,5 +54,4 @@ public class ShoppingCart {
     public LinkedHashMap<OrderService, Integer> getItems() {
         return items;
     }
-
 }
