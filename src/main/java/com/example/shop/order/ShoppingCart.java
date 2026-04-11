@@ -47,10 +47,6 @@ public class ShoppingCart {
     }
 
     public void checkout() {
-        if (paymentStrategy == null) {
-            System.out.println("No payment method selected!");
-            return;
-        }
         paymentStrategy.pay(getTotalCost());
         items.clear();
     }

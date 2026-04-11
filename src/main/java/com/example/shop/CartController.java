@@ -1,47 +1,108 @@
 package com.example.shop;
 
+import com.example.shop.order.OrderService;
+import com.example.shop.order.ShoppingCart;
+import com.example.shop.payments.BankTransfer;
+import com.example.shop.payments.CreditCard;
+import com.example.shop.payments.PayPal;
+import com.example.shop.payments.PaymentStrategy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CartController {
     @FXML
-    private TableColumn<?, ?> amountColumn;
+    private TableView<Map.Entry<OrderService, Integer>> cartTable;
 
     @FXML
-    private Button completePaymentButton;
+    private TableColumn<Map.Entry<OrderService, Integer>, String> itemColumn;
 
     @FXML
-    private TableColumn<?, ?> descriptionColumn;
+    private TableColumn<Map.Entry<OrderService, Integer>, Integer> amountColumn;
+
+    @FXML
+    private TableColumn<Map.Entry<OrderService, Integer>, Double> priceColumn;
+
+    @FXML
+    private TableColumn<Map.Entry<OrderService, Integer>, String> descriptionColumn;
+
+    @FXML
+    private TableColumn<Map.Entry<OrderService, Integer>, String> extraColumn;
+
+    @FXML
+    private ComboBox<String> paymentTypeBox;
+
+    @FXML
+    private Label totalPrice;
 
     @FXML
     private Label endMessage;
 
     @FXML
-    private TableColumn<?, ?> extraColumn;
-
-    @FXML
-    private TableColumn<?, ?> itemColumn;
-
-    @FXML
-    private ComboBox<?> paymentTypeBox;
-
-    @FXML
-    private TableColumn<?, ?> priceColumn;
-
-    @FXML
-    private Label totalPrice;
+    private Button completePaymentButton;
 
     public void initialize() {
+        paymentTypeBox.getItems().addAll("Credit Card", "PayPal", "Bank Transfer");
 
+        itemColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleStringProperty(
+                        data.getValue().getKey().getName()));
+
+        amountColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleObjectProperty<>(
+                        data.getValue().getValue()));
+
+        priceColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleObjectProperty<>(
+                        data.getValue().getKey().getCost() * data.getValue().getValue()));
+
+        descriptionColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleStringProperty(
+                        data.getValue().getKey().getDescription()));
+
+        extraColumn.setCellValueFactory(data ->
+                new javafx.beans.property.SimpleStringProperty(
+                        data.getValue().getKey().getExtras()));
+
+        refreshCart();
+    }
+
+    private void refreshCart() {
+        cartTable.getItems().clear();
+        LinkedHashMap<OrderService, Integer> items = ShoppingCart.getInstance().getItems();
+        cartTable.getItems().addAll(items.entrySet());
+        totalPrice.setText(String.format("%.2f", ShoppingCart.getInstance().getTotalCost()));
     }
 
     @FXML
     void completePaymentPressed(ActionEvent event) {
+        String selected = paymentTypeBox.getValue();
 
+        if (selected == null) {
+            endMessage.setText("Please select a payment method!");
+            return;
+        }
+
+        PaymentStrategy strategy = switch (selected) {
+            case "Credit Card" -> new CreditCard(endMessage);
+            case "PayPal" -> new PayPal(endMessage);
+            case "Bank Transfer" -> new BankTransfer(endMessage);
+            default -> null;
+        };
+
+        ShoppingCart.getInstance().setPaymentStrategy(strategy);
+
+        endMessage.setText("Payment of €"
+                + String.format("%.2f", ShoppingCart.getInstance().getTotalCost())
+                + " completed via " + selected + "!");
+
+        ShoppingCart.getInstance().checkout();
+
+
+        refreshCart();
     }
 
 }

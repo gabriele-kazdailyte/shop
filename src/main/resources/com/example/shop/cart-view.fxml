@@ -23,7 +23,7 @@
       <VBox prefHeight="535.0" prefWidth="670.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
             <Label />
-            <TableView prefHeight="200.0" prefWidth="400.0">
+            <TableView fx:id="cartTable" prefHeight="200.0" prefWidth="400.0">
               <columns>
                 <TableColumn fx:id="itemColumn" prefWidth="123.33332061767578" text="ITEM" />
                 <TableColumn fx:id="priceColumn" prefWidth="124.00001525878906" text="PRICE €" />

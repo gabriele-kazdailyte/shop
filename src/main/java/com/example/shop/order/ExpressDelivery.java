@@ -8,8 +8,14 @@ public class ExpressDelivery extends OrderDecorator {
     }
 
     @Override
-    public String getDescription() {
-        return orderService.getDescription() + " + Express Delivery";
+    public String getName() {
+        return orderService.getName();
+    }
+
+    @Override
+    public String getExtras() {
+        String existing = orderService.getExtras();
+        return existing.equals("None") ? "Express Delivery" : existing + ", Express Delivery";
     }
 
     @Override
