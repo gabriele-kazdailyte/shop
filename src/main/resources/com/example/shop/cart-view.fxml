@@ -79,7 +79,33 @@
       </VBox>
    </center>
    <left>
-      <VBox prefHeight="383.0" prefWidth="66.0" BorderPane.alignment="CENTER" />
+      <VBox prefHeight="462.0" prefWidth="109.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Label />
+                  <Button mnemonicParsing="false" onAction="#removeItemPressed" text="REMOVE ITEM" textFill="#aa2a2a">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Label />
+                  <Label text="GO TO STORE">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="goToStoreButton" mnemonicParsing="false" onAction="#goToStorePressed" prefHeight="66.0" prefWidth="72.0" text="🛍">
+                     <font>
+                        <Font name="Tw Cen MT Bold" size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </VBox>
+         </children></VBox>
    </left>
    <right>
       <VBox prefHeight="535.0" prefWidth="45.0" BorderPane.alignment="CENTER">

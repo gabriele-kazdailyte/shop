@@ -33,6 +33,9 @@ public class CartController {
     private TableColumn<Map.Entry<OrderService, Integer>, String> extraColumn;
 
     @FXML
+    private Button goToStoreButton;
+
+    @FXML
     private ComboBox<String> paymentTypeBox;
 
     @FXML
@@ -103,6 +106,16 @@ public class CartController {
 
 
         refreshCart();
+    }
+
+    @FXML
+    void goToStorePressed(ActionEvent event) {
+        goToStoreButton.getScene().getWindow().hide();
+    }
+
+    @FXML
+    void removeItemPressed(ActionEvent event) {
+
     }
 
 }
