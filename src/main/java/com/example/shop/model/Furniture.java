@@ -35,6 +35,12 @@ public class Furniture implements Product {
         return material;
     }
 
+    public void decreaseQuantity() {
+        if (quantity > 0) {
+            quantity--;
+        }
+    }
+
     public String toString() {
         return "Furniture{name='" + name + "', price=" + price + ", material='" + material + "'}";
     }

@@ -5,4 +5,5 @@ public interface Product {
     double getPrice();
     ProductCategory getCategory();
     int getQuantity();
+    void decreaseQuantity();
 }

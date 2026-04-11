@@ -35,6 +35,12 @@ public class Electronics implements Product {
         return brand;
     }
 
+    public void decreaseQuantity() {
+        if (quantity > 0) {
+            quantity--;
+        }
+    }
+
     public String toString() {
         return "Electronics{name='" + name + "', price=" + price + ", brand='" + brand + "'}";
     }

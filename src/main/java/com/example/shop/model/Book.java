@@ -35,6 +35,12 @@ public class Book implements Product {
         return author;
     }
 
+    public void decreaseQuantity() {
+        if (quantity > 0) {
+            quantity--;
+        }
+    }
+
     public String toString() {
         return "Book{name='" + name + "', price=" + price + ", author='" + author + "'}";
     }
