@@ -24,7 +24,7 @@ public class CartController {
     private TableColumn<Map.Entry<OrderService, Integer>, Integer> amountColumn;
 
     @FXML
-    private TableColumn<Map.Entry<OrderService, Integer>, Double> priceColumn;
+    private TableColumn<Map.Entry<OrderService, Integer>, String> priceColumn;
 
     @FXML
     private TableColumn<Map.Entry<OrderService, Integer>, String> descriptionColumn;
@@ -58,9 +58,11 @@ public class CartController {
                 new javafx.beans.property.SimpleObjectProperty<>(
                         data.getValue().getValue()));
 
-        priceColumn.setCellValueFactory(data ->
-                new javafx.beans.property.SimpleObjectProperty<>(
-                        data.getValue().getKey().getCost() * data.getValue().getValue()));
+        priceColumn.setCellValueFactory(data -> {
+            double cost = data.getValue().getKey().getCost() * data.getValue().getValue();
+            String formatted = String.format("%.2f", cost);
+            return new javafx.beans.property.SimpleStringProperty(formatted);
+        });
 
         descriptionColumn.setCellValueFactory(data ->
                 new javafx.beans.property.SimpleStringProperty(
