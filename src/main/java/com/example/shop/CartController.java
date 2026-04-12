@@ -1,5 +1,7 @@
 package com.example.shop;
 
+import com.example.shop.inventory.Inventory;
+import com.example.shop.model.Product;
 import com.example.shop.order.OrderService;
 import com.example.shop.order.ShoppingCart;
 import com.example.shop.payments.BankTransfer;
@@ -117,8 +119,25 @@ public class CartController {
 
     @FXML
     void removeItemPressed(ActionEvent event) {
-        
+        Map.Entry<OrderService, Integer> selected = cartTable.getSelectionModel().getSelectedItem();
 
+        if (selected == null) {
+            return;
+        }
+
+        OrderService order = selected.getKey();
+
+        Inventory inventory = Inventory.getInstance();
+        for (Product product : inventory.getProducts()) {
+            if (product.getName().equals(order.getName())) {
+                    product.increaseQuantity(1);
+                    break;
+            }
+        }
+
+        ShoppingCart.getInstance().removeItem(order);
+
+        refreshCart();
     }
 
 }

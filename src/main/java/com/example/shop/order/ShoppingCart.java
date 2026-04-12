@@ -24,7 +24,8 @@ public class ShoppingCart {
 
     public void addItem(OrderService order) {
         for (OrderService existing : items.keySet()) {
-            if (existing.getDescription().equals(order.getDescription())) {
+            if (existing.getDescription().equals(order.getDescription())
+                    && existing.getExtras().equals(order.getExtras())) {
                 items.put(existing, items.get(existing) + 1);
                 return;
             }
@@ -33,7 +34,18 @@ public class ShoppingCart {
     }
 
     public void removeItem(OrderService order) {
-        items.remove(order);
+        for (OrderService existing : items.keySet()) {
+            if (existing.getDescription().equals(order.getDescription())
+                    && existing.getExtras().equals(order.getExtras())) {
+                int currentQty = items.get(existing);
+                if (currentQty <= 1) {
+                    items.remove(existing);
+                } else {
+                    items.put(existing, currentQty - 1);
+                }
+                return;
+            }
+        }
     }
 
     public void setPaymentStrategy(PaymentStrategy strategy) {

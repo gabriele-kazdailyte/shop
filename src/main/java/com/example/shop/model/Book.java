@@ -43,8 +43,8 @@ public class Book implements Product {
     }
 
     @Override
-    public void increaseQuantity() {
-        quantity++;
+    public void increaseQuantity(int amount) {
+        quantity += amount;
     }
 
     public String toString() {

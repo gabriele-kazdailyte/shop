@@ -1,5 +1,9 @@
 package com.example.shop.inventory;
 
+import com.example.shop.Controller;
+import com.example.shop.model.Book;
+import com.example.shop.model.Electronics;
+import com.example.shop.model.Furniture;
 import com.example.shop.model.Product;
 import com.example.shop.observer.ProductObserver;
 import com.example.shop.observer.ProductSubject;
@@ -28,6 +32,19 @@ public class Inventory implements ProductSubject {
     public void addProduct(Product product) {
         products.add(product);
         notifyObservers(product);
+    }
+
+    public void addMoreOfProduct(Product product) {
+        for (Product existing : products) {
+            if (existing.getName().equals(product.getName())
+                    && existing.getCategory().equals(product.getCategory())
+                    && existing.getPrice() == product.getPrice()
+                    && getDetail(existing).equals(getDetail(product))) {
+                existing.increaseQuantity(product.getQuantity());
+                notifyObservers(existing);
+                return;
+            }
+        }
     }
 
     public void removeProduct(Product product) {
@@ -62,5 +79,12 @@ public class Inventory implements ProductSubject {
 
     public int getObserverCount() {
         return observers.size();
+    }
+
+    private String getDetail(Product p) {
+        if (p instanceof Book b) return  b.getAuthor();
+        if (p instanceof Electronics e) return e.getBrand();
+        if (p instanceof Furniture f) return f.getMaterial();
+        return "";
     }
 }

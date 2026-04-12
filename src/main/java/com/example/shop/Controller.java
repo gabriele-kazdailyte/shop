@@ -108,8 +108,19 @@ public class Controller {
         Product product = addProductController.getCreatedProduct();
 
         if (product != null) {
-            inventory.addProduct(product);
-            productTable.getItems().add(product);
+            boolean exists = productTable.getItems().stream()
+                    .anyMatch(p -> p.getName().equals(product.getName())
+                            && p.getCategory().equals(product.getCategory()) &&
+                            p.getPrice() == product.getPrice() &&
+                            getDetail(p).equals(getDetail(product)));
+
+            if (exists) {
+                inventory.addMoreOfProduct(product);
+                productTable.refresh();
+            } else {
+                inventory.addProduct(product);
+                productTable.getItems().add(product);
+            }
         }
     }
 
@@ -148,9 +159,6 @@ public class Controller {
         selectedProduct.decreaseQuantity();
         productTable.refresh();
 
-        messagesArea.appendText("Added to cart: " + order.getDescription()
-                + " | €" + order.getCost() + "\n");
-
         giftWrapping.setSelected(false);
         expressDelivery.setSelected(false);
     }
@@ -164,6 +172,8 @@ public class Controller {
         stage.setTitle("Your Cart");
         stage.setScene(new Scene(root));
         stage.showAndWait();
+
+        productTable.refresh();
     }
 
 }

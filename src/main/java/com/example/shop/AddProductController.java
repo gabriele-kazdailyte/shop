@@ -72,7 +72,7 @@ public class AddProductController {
         }
         price = Math.round(price * 100.0) / 100.0;
 
-        String quantityText = quantityField.getText();
+        String quantityText = quantityField.getText().trim();;
         if (quantityText == null || quantityText.isEmpty()) {
             messagesLabel.setText("Please input a quantity!");
             return;
