@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shop.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="841.0" style="-fx-background-color: #FAF5FA" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shop.Controller">
    <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="793.0" text="- ONLINE STORE -" textAlignment="CENTER" BorderPane.alignment="TOP_CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="843.0" style="-fx-background-color: #B58BB5" text="- ONLINE STORE -" textAlignment="CENTER" BorderPane.alignment="TOP_CENTER">
          <font>
             <Font name="Tw Cen MT Bold" size="34.0" />
          </font>
@@ -33,10 +33,10 @@
             </Label>
             <TableView fx:id="productTable" prefHeight="369.0" prefWidth="509.0">
               <columns>
-                <TableColumn fx:id="nameColumn" prefWidth="139.3333282470703" text="ITEM" />
-                <TableColumn fx:id="priceColumn" prefWidth="102.0" text="PRICE €" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="172.66665649414062" text="DESCRIPTION" />
-                  <TableColumn fx:id="amountColumn" prefWidth="112.00006103515625" text="AMOUNT" />
+                <TableColumn fx:id="nameColumn" prefWidth="139.3333282470703" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="ITEM" />
+                <TableColumn fx:id="priceColumn" prefWidth="102.0" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="PRICE €" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="172.66665649414062" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="DESCRIPTION" />
+                  <TableColumn fx:id="amountColumn" prefWidth="112.00006103515625" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="AMOUNT" />
               </columns>
             </TableView>
          </children>
@@ -63,7 +63,7 @@
                <font>
                   <Font name="Tw Cen MT Bold" size="12.0" />
                </font></CheckBox>
-            <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#addToCartPressed" text="ADD TO CART" textFill="#656991">
+            <Button fx:id="addToCartButton" mnemonicParsing="false" onAction="#addToCartPressed" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9;" text="ADD TO CART" textFill="#656991">
                <font>
                   <Font name="Tw Cen MT Bold" size="12.0" />
                </font>
@@ -75,7 +75,7 @@
                   <Font name="Tw Cen MT Bold" size="12.0" />
                </font>
             </Label>
-            <Button fx:id="cartButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#goToCartPressed" prefHeight="21.0" prefWidth="53.0" text="🛒" textAlignment="RIGHT">
+            <Button fx:id="cartButton" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#goToCartPressed" prefHeight="57.0" prefWidth="63.0" style="-fx-background-color: #EDE8D0; -fx-border-color: #CDB891" text="🛒" textAlignment="RIGHT">
                <font>
                   <Font size="22.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Font name="Tw Cen MT Bold" size="18.0" />
                </font>
             </Label>
-            <TextArea fx:id="messagesArea" prefHeight="368.0" prefWidth="127.0" />
+            <TextArea fx:id="messagesArea" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" prefHeight="368.0" prefWidth="127.0" />
          </children>
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" top="20.0" />
@@ -105,14 +105,14 @@
       </VBox>
    </right>
    <bottom>
-      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="628.0" spacing="30.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="628.0" spacing="30.0" style="-fx-background-color: #B58BB5" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addProduct" cache="true" mnemonicParsing="false" onAction="#addProductPressed" text="ADD PRODUCT" textFill="#56824b">
+            <Button fx:id="addProduct" cache="true" mnemonicParsing="false" onAction="#addProductPressed" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9;" text="ADD PRODUCT" textFill="#56824b">
                <font>
                   <Font name="Tw Cen MT Bold" size="14.0" />
                </font>
             </Button>
-            <Button fx:id="removeProduct" mnemonicParsing="false" onAction="#removeProductPressed" text="REMOVE PRODUCT" textFill="#9a2c2c">
+            <Button fx:id="removeProduct" mnemonicParsing="false" onAction="#removeProductPressed" style="-fx-background-color: #F5EDF5; -fx-border-color: #D9C3D9;" text="REMOVE PRODUCT" textFill="#9a2c2c">
                <HBox.margin>
                   <Insets />
                </HBox.margin>

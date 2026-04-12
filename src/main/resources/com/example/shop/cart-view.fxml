@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="841.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shop.CartController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="841.0" style="-fx-background-color: #F5F2EB" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.shop.CartController">
    <top>
-      <Label prefHeight="38.0" prefWidth="289.0" text="- SHOPPING CART -" BorderPane.alignment="CENTER">
+      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="862.0" style="-fx-background-color: #F2EBD3" text="- SHOPPING CART -" textAlignment="CENTER" BorderPane.alignment="CENTER">
          <font>
             <Font name="Tw Cen MT Bold" size="34.0" />
          </font>
@@ -25,11 +25,11 @@
             <Label />
             <TableView fx:id="cartTable" prefHeight="200.0" prefWidth="400.0">
               <columns>
-                <TableColumn fx:id="itemColumn" prefWidth="123.33332061767578" text="ITEM" />
-                <TableColumn fx:id="priceColumn" prefWidth="124.00001525878906" text="PRICE €" />
-                  <TableColumn fx:id="descriptionColumn" prefWidth="195.33328247070312" text="DESCRIPTION" />
-                  <TableColumn fx:id="amountColumn" prefWidth="95.33340454101562" text="AMOUNT" />
-                  <TableColumn fx:id="extraColumn" prefWidth="169.33331298828125" text="EXTRAS" />
+                <TableColumn fx:id="itemColumn" prefWidth="123.33332061767578" style="-fx-background-color: #F5F3E6; -fx-border-color: #E3DECF; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="ITEM" />
+                <TableColumn fx:id="priceColumn" prefWidth="124.00001525878906" style="-fx-background-color: #F5F3E6; -fx-border-color: #E3DECF; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="PRICE €" />
+                  <TableColumn fx:id="descriptionColumn" prefWidth="195.33328247070312" style="-fx-background-color: #F5F3E6; -fx-border-color: #E3DECF; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="DESCRIPTION" />
+                  <TableColumn fx:id="amountColumn" prefWidth="95.33340454101562" style="-fx-background-color: #F5F3E6; -fx-border-color: #E3DECF; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="AMOUNT" />
+                  <TableColumn fx:id="extraColumn" prefWidth="169.33331298828125" style="-fx-background-color: #F5F3E6; -fx-border-color: #E3DECF; -fx-font-family: 'Tw Cen MT'; -fx-font-size: 13px; -fx-font-weight: bold;" text="EXTRAS" />
               </columns>
             </TableView>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
@@ -60,7 +60,7 @@
                               <Font name="Tw Cen MT Bold Italic" size="12.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="paymentTypeBox" prefHeight="32.0" prefWidth="121.0" />
+                        <ComboBox fx:id="paymentTypeBox" style="-fx-background-color: #EDE8D0; -fx-border-color: #CDB891" prefHeight="32.0" prefWidth="121.0" />
                      </children>
                   </VBox>
                   <Label prefHeight="93.0" prefWidth="223.0" text="💳 🅿 🏦">
@@ -68,7 +68,7 @@
                         <Font size="59.0" />
                      </font>
                   </Label>
-                  <Button fx:id="completePaymentButton" mnemonicParsing="false" onAction="#completePaymentPressed" prefHeight="33.0" prefWidth="162.0" text="COMPLETE PAYMENT">
+                  <Button fx:id="completePaymentButton" mnemonicParsing="false" onAction="#completePaymentPressed" prefHeight="33.0" prefWidth="162.0" style="-fx-background-color: #EDE8D0; -fx-border-color: #CDB891" text="COMPLETE PAYMENT">
                      <font>
                         <Font name="Tw Cen MT Bold" size="14.0" />
                      </font>
@@ -81,10 +81,10 @@
    <left>
       <VBox prefHeight="462.0" prefWidth="109.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+            <VBox alignment="CENTER" prefHeight="219.0" prefWidth="109.0" spacing="20.0">
                <children>
                   <Label />
-                  <Button mnemonicParsing="false" onAction="#removeItemPressed" text="REMOVE ITEM" textFill="#aa2a2a">
+                  <Button mnemonicParsing="false" onAction="#removeItemPressed" style="-fx-background-color: #EDE8D0; -fx-border-color: #CDB891" text="REMOVE ITEM" textFill="#aa2a2a">
                      <font>
                         <Font name="Tw Cen MT Bold" size="12.0" />
                      </font>
@@ -95,7 +95,7 @@
                         <Font name="Tw Cen MT Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="goToStoreButton" mnemonicParsing="false" onAction="#goToStorePressed" prefHeight="66.0" prefWidth="72.0" text="🛍">
+                  <Button fx:id="goToStoreButton" mnemonicParsing="false" onAction="#goToStorePressed" prefHeight="73.0" prefWidth="73.0" style="-fx-background-color: #EBE1EB; -fx-border-color: #D9C3D9" text="🛍">
                      <font>
                         <Font name="Tw Cen MT Bold" size="30.0" />
                      </font>

@@ -28,7 +28,7 @@ public class Controller {
     private TableColumn<Product, String> nameColumn;
 
     @FXML
-    private TableColumn<Product, Double> priceColumn;
+    private TableColumn<Product, String> priceColumn;
 
     @FXML
     private TableView<Product> productTable;
@@ -61,7 +61,8 @@ public class Controller {
                 new javafx.beans.property.SimpleStringProperty(data.getValue().getName()));
 
         priceColumn.setCellValueFactory(data ->
-                new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getPrice()));
+                new javafx.beans.property.SimpleStringProperty(
+                        String.format("%.2f €", data.getValue().getPrice())));
 
         amountColumn.setCellValueFactory(data -> new javafx.beans.property.SimpleObjectProperty<>(data.getValue().getQuantity()));
 

@@ -62,7 +62,7 @@ public class CartController {
 
         priceColumn.setCellValueFactory(data -> {
             double cost = data.getValue().getKey().getCost() * data.getValue().getValue();
-            String formatted = String.format("%.2f", cost);
+            String formatted = String.format("%.2f €", cost);
             return new javafx.beans.property.SimpleStringProperty(formatted);
         });
 
