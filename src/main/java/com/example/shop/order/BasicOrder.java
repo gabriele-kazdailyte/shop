@@ -1,9 +1,6 @@
 package com.example.shop.order;
 
-import com.example.shop.model.Book;
-import com.example.shop.model.Electronics;
-import com.example.shop.model.Furniture;
-import com.example.shop.model.Product;
+import com.example.shop.model.*;
 
 public class BasicOrder implements OrderService {
     private Product product;
@@ -23,6 +20,24 @@ public class BasicOrder implements OrderService {
     @Override
     public double getCost() {
         return product.getPrice();
+    }
+
+    @Override
+    public double getPrice() {
+        return product.getPrice();
+    }
+
+    @Override
+    public ProductCategory getCategory() {
+        return product.getCategory();
+    }
+
+    @Override
+    public String getDetail() {
+        if (product instanceof Book b) return b.getAuthor();
+        if (product instanceof Electronics e) return e.getBrand();
+        if (product instanceof Furniture f) return f.getMaterial();
+        return "";
     }
 
     @Override

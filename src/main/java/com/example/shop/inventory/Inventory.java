@@ -81,7 +81,7 @@ public class Inventory implements ProductSubject {
         return observers.size();
     }
 
-    private String getDetail(Product p) {
+    public String getDetail(Product p) {
         if (p instanceof Book b) return  b.getAuthor();
         if (p instanceof Electronics e) return e.getBrand();
         if (p instanceof Furniture f) return f.getMaterial();

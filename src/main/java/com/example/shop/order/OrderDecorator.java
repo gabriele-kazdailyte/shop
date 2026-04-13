@@ -1,5 +1,7 @@
 package com.example.shop.order;
 
+import com.example.shop.model.ProductCategory;
+
 public abstract class OrderDecorator implements OrderService {
     protected OrderService orderService;
 
@@ -25,5 +27,20 @@ public abstract class OrderDecorator implements OrderService {
     @Override
     public String getDescription() {
         return orderService.getDescription();
+    }
+
+    @Override
+    public double getPrice() {
+        return orderService.getPrice();
+    }
+
+    @Override
+    public ProductCategory getCategory() {
+        return orderService.getCategory();
+    }
+
+    @Override
+    public String getDetail() {
+        return orderService.getDetail();
     }
 }

@@ -1,6 +1,9 @@
 package com.example.shop;
 
 import com.example.shop.inventory.Inventory;
+import com.example.shop.model.Book;
+import com.example.shop.model.Electronics;
+import com.example.shop.model.Furniture;
 import com.example.shop.model.Product;
 import com.example.shop.order.OrderService;
 import com.example.shop.order.ShoppingCart;
@@ -129,15 +132,25 @@ public class CartController {
 
         Inventory inventory = Inventory.getInstance();
         for (Product product : inventory.getProducts()) {
-            if (product.getName().equals(order.getName())) {
-                    product.increaseQuantity(1);
-                    break;
+            if (product.getName().equals(order.getName())
+                    && product.getCategory().equals(order.getCategory())
+                    && Math.abs(product.getPrice() - order.getPrice()) < 0.001
+                    && getDetail(product).equals(order.getDetail())) {
+                product.increaseQuantity(1);
+                break;
             }
         }
 
         ShoppingCart.getInstance().removeItem(order);
 
         refreshCart();
+    }
+
+    private String getDetail(Product p) {
+        if (p instanceof Book b) return b.getAuthor();
+        if (p instanceof Electronics e) return e.getBrand();
+        if (p instanceof Furniture f) return f.getMaterial();
+        return "";
     }
 
 }

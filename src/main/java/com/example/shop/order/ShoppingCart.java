@@ -25,7 +25,9 @@ public class ShoppingCart {
     public void addItem(OrderService order) {
         for (OrderService existing : items.keySet()) {
             if (existing.getDescription().equals(order.getDescription())
-                    && existing.getExtras().equals(order.getExtras())) {
+                    && existing.getExtras().equals(order.getExtras())
+                    && existing.getPrice() == order.getPrice()
+                    && existing.getCategory().equals(order.getCategory())) {
                 items.put(existing, items.get(existing) + 1);
                 return;
             }
